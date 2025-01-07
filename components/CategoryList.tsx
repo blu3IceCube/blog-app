@@ -5,7 +5,7 @@ import fashionImg from "@/public/fashion.jpg";
 import foodImg from "@/public/food.jpg";
 import travelImg from "@/public/travel.jpg";
 import cultureImg from "@/public/culture.jpg";
-import CodingImg from "@/public/Coding.jpg";
+import codingImg from "@/public/coding.jpg";
 
 const CategoryList = () => {
   return (
@@ -33,7 +33,7 @@ const CategoryList = () => {
           Culture
         </Link>
         <Link href="/blog?cat=style" className="flex items-center gap-3">
-          <Image src={CodingImg} alt="" width={32} height={32} className="" />
+          <Image src={codingImg} alt="" width={32} height={32} className="" />
           Coding
         </Link>
       </div>
