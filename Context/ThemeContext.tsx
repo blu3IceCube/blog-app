@@ -2,13 +2,14 @@
 
 import { createContext, useEffect, useState } from "react";
 
-export const ThemeContext = createContext("light");
+export const ThemeContext = createContext({ theme: "light", toggle: () => {} });
 
 const getFromLocalStorage = () => {
   if (typeof window !== undefined) {
     const value = localStorage.getItem("theme");
     return value || "light";
   }
+  return "light";
 };
 
 export const ThemeContextProvider = ({
