@@ -9,7 +9,7 @@ import AuthLinks from "./AuthLinks";
 
 const Navbar = () => {
   return (
-    <div className="flex items-center justify-between sticky top-0 h-24 nav-bg">
+    <div className="flex items-center justify-between sticky top-0 h-24 nav-bg z-50">
       <div className="flex gap-3 flex-1 items-center max-1024:hidden">
         <Image src={facebook} alt="facebook" width={24} height={24} />
         <Image src={instagram} alt="instagram" width={24} height={24} />

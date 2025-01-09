@@ -4,11 +4,11 @@ import Image from "next/image";
 const Featured = () => {
   return (
     <div className="mt-8">
-      <h1 className="text-7xl">
+      <h1 className="text-7xl max-1024:text-6xl max-768:text-5xl max-640:text-4xl">
         <b>Hey, snehil here!</b> Discover my stories and creative ideas.
       </h1>
       <div className="flex items-center gap-12 mt-14">
-        <div className="flex-1 relative h-[400px]">
+        <div className="flex-1 relative h-[400px] max-1024:hidden">
           <Image
             src={image1}
             alt="featured post img"
