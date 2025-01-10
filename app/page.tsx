@@ -8,7 +8,7 @@ const Home = () => {
     <div>
       <Featured />
       <CategoryList />
-      <div className="flex gap-12">
+      <div className="flex gap-9">
         <CardList />
         <Menu />
       </div>

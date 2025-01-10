@@ -4,11 +4,11 @@ import Image from "next/image";
 const Featured = () => {
   return (
     <div className="mt-8">
-      <h1 className="text-7xl max-1024:text-6xl max-768:text-5xl max-640:text-4xl">
+      <h1 className="text-6xl max-1024:text-5xl max-768:text-4xl max-640:text-3xl">
         <b>Hey, snehil here!</b> Discover my stories and creative ideas.
       </h1>
-      <div className="flex items-center gap-12 mt-14">
-        <div className="flex-1 relative h-[400px] max-1024:hidden">
+      <div className="flex items-center gap-10 mt-14">
+        <div className="flex-1 relative h-[350px] max-1024:hidden">
           <Image
             src={image1}
             alt="featured post img"
@@ -16,11 +16,11 @@ const Featured = () => {
             fill
           />
         </div>
-        <div className="flex-1 flex flex-col gap-5 items-start justify-start">
-          <h1 className="text-4xl font-bold">
+        <div className="flex-1 flex flex-col gap-6 items-start justify-start">
+          <h1 className="text-3xl font-bold">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </h1>
-          <p className="text-xl font-normal text-[#626262]">
+          <p className="text-lg font-normal text-[#626262]">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut cum
             molestiae enim quaerat distinctio eligendi aut maxime sint? Omnis
             quaerat provident deleniti repellendus eligendi quibusdam illum
