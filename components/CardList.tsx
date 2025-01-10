@@ -7,7 +7,7 @@ import Card from "./Card";
 const CardList = () => {
   return (
     <div className="flex-[5]">
-      <h1 className="font-bold text-xl my-10">Recent Posts</h1>
+      <h1 className="font-bold text-2xl my-10">Recent Posts</h1>
       <div>
         <Card />
         <Card />

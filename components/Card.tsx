@@ -14,7 +14,7 @@ const Card = () => {
           <span className="text-red-500 font-medium">CULTURE</span>
         </div>
         <Link href="/" className="font-bold">
-          <h1 className="text-xl">
+          <h1 className="text-2xl">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
           </h1>
         </Link>

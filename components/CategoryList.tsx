@@ -10,7 +10,7 @@ import codingImg from "@/public/coding.jpg";
 const CategoryList = () => {
   return (
     <div>
-      <h1 className="my-10 font-bold text-xl">Popular Categories</h1>
+      <h1 className="my-10 font-bold text-2xl">Popular Categories</h1>
       <div className="flex flex-wrap justify-between gap-5">
         <Link
           href="/blog?cat=style"
