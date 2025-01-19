@@ -5,7 +5,7 @@ import Link from "next/link";
 const Card = () => {
   return (
     <div className="mb-12 flex items-center gap-8">
-      <div className="flex h-[270px] w-[360px] relative">
+      <div className="flex h-[270px] w-[360px] relative max-1280:hidden">
         <Image src={tempImg} alt="" className="object-cover" fill />
       </div>
       <div className="flex flex-col gap-3 flex-1">

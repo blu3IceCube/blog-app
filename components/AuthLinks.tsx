@@ -51,7 +51,14 @@ const AuthLinks = () => {
         ></span>
       </div>
       {open && (
-        <div className="flex flex-col items-center justify-center gap-12 text-2xl absolute top-24 left-0 h-[calc(100vh-96px)] w-full bg-white">
+        <div
+          className="flex flex-col items-center justify-center gap-12 text-2xl absolute top-24 left-0 h-[calc(100vh-96px)] w-full"
+          style={
+            theme === "dark"
+              ? { backgroundColor: "#0f172a" }
+              : { backgroundColor: "#fff" }
+          }
+        >
           <Link href="/">Homepage</Link>
           <Link href="/">About</Link>
           <Link href="/">Contact</Link>
