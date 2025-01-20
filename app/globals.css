@@ -52,6 +52,14 @@ a {
   opacity: 95%;
 }
 
+.ql-container {
+  font-size: 28px !important;
+}
+
+.quill > .ql-container > .ql-editor.ql-blank::before {
+  color: #b3b3bb;
+}
+
 @media screen and (max-width: 1536px) {
   .wrapper {
     max-width: 1475px;

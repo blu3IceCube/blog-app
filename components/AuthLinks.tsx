@@ -6,7 +6,7 @@ import React, { useContext, useState } from "react";
 const AuthLinks = () => {
   const [open, setOpen] = useState(false);
   const { theme } = useContext(ThemeContext);
-  const status = "notauthenticated";
+  const status: string = "authenticated";
   return (
     <>
       {status === "notauthenticated" ? (
