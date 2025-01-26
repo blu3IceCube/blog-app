@@ -1,15 +1,16 @@
 "use client";
 import { ThemeContext } from "@/Context/ThemeContext";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useContext, useState } from "react";
 
 const AuthLinks = () => {
   const [open, setOpen] = useState(false);
   const { theme } = useContext(ThemeContext);
-  const status: string = "authenticated";
+  const { status } = useSession();
   return (
     <>
-      {status === "notauthenticated" ? (
+      {status === "unauthenticated" ? (
         <Link href="/login" className="max-640:hidden">
           Login
         </Link>
@@ -18,7 +19,12 @@ const AuthLinks = () => {
           <Link href="/write" className="max-640:hidden">
             Write
           </Link>
-          <span className="cursor-pointer max-640:hidden">Logout</span>
+          <span
+            className="cursor-pointer max-640:hidden"
+            onClick={() => signOut()}
+          >
+            Logout
+          </span>
         </>
       )}
       <div
@@ -62,7 +68,7 @@ const AuthLinks = () => {
           <Link href="/">Homepage</Link>
           <Link href="/">About</Link>
           <Link href="/">Contact</Link>
-          {status === "notauthenticated" ? (
+          {status === "unauthenticated" ? (
             <Link href="/login">Login</Link>
           ) : (
             <>
