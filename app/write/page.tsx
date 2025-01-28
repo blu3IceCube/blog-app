@@ -10,11 +10,24 @@ import imageImg from "@/public/image.png";
 import externalImg from "@/public/external.png";
 import videoImg from "@/public/video.png";
 import { ThemeContext } from "@/Context/ThemeContext";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const WritePage = () => {
+  const { status } = useSession();
+  const router = useRouter();
+
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const { theme } = useContext(ThemeContext);
+
+  if (status === "loading") {
+    return <div>Loadong...</div>;
+  }
+
+  if (status === "authenticated") {
+    router.push("/");
+  }
 
   return (
     <div>
