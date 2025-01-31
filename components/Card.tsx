@@ -10,33 +10,35 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ item }) => {
   return (
     <div className="mb-12 flex items-center gap-8">
-      <div className="flex h-[270px] w-[360px] relative max-1280:hidden">
-        <Image src={tempImg} alt="" className="object-cover" fill />
-      </div>
+      {item.img && (
+        <div className="flex h-[270px] w-[360px] relative max-1280:hidden">
+          <Image src={item.img} alt="" className="object-cover" fill />
+        </div>
+      )}
       <div className="flex flex-col gap-3 flex-1">
         <div className="text-xs">
           <span className="text-gray-500">
-            {new Date(item.createdAt).toLocaleDateString()} -{" "}
+            {item.createdAt.substring(0, 10)} -{" "}
           </span>
           <span className="text-red-500 font-medium">
             {item.catSlug.toUpperCase()}
           </span>
         </div>
-        <Link href="/" className="font-bold">
+        <Link href={`/posts/${item.slug}`} className="font-bold">
           <h1 className="text-2xl">
             {item.title}
             {/* Lorem ipsum, dolor sit amet consectetur adipisicing elit. */}
           </h1>
         </Link>
         <p className="text-sm text-gray-500">
-          {item.desc}
+          {item.desc.substring(0, 60)}
           {/* Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates
           incidunt ea explicabo velit voluptatem optio veritatis commodi nulla
           voluptatum aut eos labore delectus ad, consequatur accusamus fugiat
           minima omnis itaque! */}
         </p>
         <Link
-          href="/"
+          href={`/posts/${item.slug}`}
           className="text-sm border-b-[1px] border-red-500 w-max py-1"
         >
           Read More

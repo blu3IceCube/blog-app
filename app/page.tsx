@@ -15,7 +15,7 @@ const Home: FC<Props> = ({ searchParams }) => {
       <Featured />
       <CategoryList />
       <div className="flex gap-12">
-        <CardList page={page} />
+        <CardList page={page} cat="" />
         <Menu />
       </div>
     </div>

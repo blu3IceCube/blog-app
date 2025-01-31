@@ -29,7 +29,7 @@ const CategoryList = async () => {
       <div className="flex flex-wrap justify-between gap-5">
         {data.map((item: any) => (
           <Link
-            href="/blog?cat=style"
+            href={`/blog?cat=${item.slug}`}
             className={`flex items-center gap-3 capitalize w-[15%] h-14 justify-center rounded-xl max-1024:w-[25%] max-768:w-[45%] max-640:w-full ${
               bgColors[item.slug] || "bg-gray-500"
             }`}
