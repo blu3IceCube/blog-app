@@ -1,9 +1,42 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import tempImg from "@/public/p1.jpg";
+import useSWR from "swr";
+import { useSession } from "next-auth/react";
+import { Comment } from "@/types";
+import { useState } from "react";
 
-const Comments = () => {
-  const status = "authenticated";
+const fetcher = async (url: string) => {
+  const res = await fetch(url);
+  const data = await res.json();
+
+  if (!res.ok) {
+    const error = new Error(data.message);
+    throw error;
+  }
+
+  return data;
+};
+
+const Comments = ({ postSlug }: { postSlug: string }) => {
+  const { status } = useSession();
+  const { data, mutate, isLoading } = useSWR(
+    `http://localhost:3000/api/comments?postSlug=${postSlug}`,
+    fetcher
+  );
+
+  const [desc, setDesc] = useState("");
+
+  const handleSubmit = async () => {
+    await fetch("/api/comments", {
+      method: "POST",
+      body: JSON.stringify({ desc, postSlug }),
+    });
+    mutate();
+  };
+
   return (
     <div className="mt-12">
       <h1 className="font-bold text-3xl text-[#626262] mb-9">Comments</h1>
@@ -12,35 +45,43 @@ const Comments = () => {
           <textarea
             placeholder="write a comment..."
             className="p-5 w-full text-black"
+            onChange={(e) => setDesc(e.target.value)}
           />
-          <button className="py-2 px-5 bg-teal-500 text-white font-bold border-none rounded-md cursor-pointer">
+          <button
+            className="py-2 px-5 bg-teal-500 text-white font-bold border-none rounded-md cursor-pointer"
+            onClick={handleSubmit}
+          >
             Send
           </button>
         </div>
       ) : (
         <Link href=".login">Login to write a comment</Link>
       )}
-      <div className="mt-12">
-        <div className="mb-12">
-          <div className="flex items-center gap-5 mb-5">
-            <div className="h-12 w-12 relative">
-              <Image
-                src={tempImg}
-                alt=""
-                className="object-cover rounded-[50%]"
-                fill
-              />
+      {isLoading
+        ? "loading"
+        : data?.map((item: any) => (
+            <div className="mt-12" key={item._id}>
+              <div className="mb-12">
+                <div className="flex items-center gap-5 mb-5">
+                  <div className="h-12 w-12 relative">
+                    {item?.user?.image && (
+                      <Image
+                        src={item.user.image}
+                        alt=""
+                        className="object-cover rounded-[50%]"
+                        fill
+                      />
+                    )}
+                  </div>
+                  <div className="flex flex-col text-[#626262]">
+                    <span className="text-md font-bold">{item.user.name}</span>
+                    <span className="text-xs">{item.createdAt}</span>
+                  </div>
+                </div>
+                <p className="text-lg">{item.desc}</p>
+              </div>
             </div>
-            <div className="flex flex-col text-[#626262]">
-              <span className="text-md font-bold">John Doe</span>
-              <span className="text-xs">10.01.2025</span>
-            </div>
-          </div>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </div>
-      </div>
+          ))}
     </div>
   );
 };
