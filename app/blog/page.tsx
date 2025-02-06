@@ -2,11 +2,11 @@ import CardList from "@/components/CardList";
 import Menu from "@/components/Menu";
 import { FC } from "react";
 
-interface Props {
-  searchParams: { page?: string; cat?: string | "" };
+interface BlogPageProps {
+  searchParams: Record<string, string | undefined>;
 }
 
-const BlogPage: FC<Props> = ({ searchParams }) => {
+const BlogPage = ({ searchParams }: BlogPageProps) => {
   const page = parseInt(searchParams.page as string) || 1;
   const cat = searchParams.cat || "";
   return (
