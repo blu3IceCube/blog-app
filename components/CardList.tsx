@@ -10,7 +10,7 @@ interface PostResponse {
 
 const getData = async (page: number, cat?: string): Promise<PostResponse> => {
   const res = await fetch(
-    `http://localhost:3000/api/posts?page=${page}&cat=${cat}`,
+    `https://blog-app-brown-gamma.vercel.app/api/posts?page=${page}&cat=${cat}`,
     {
       cache: "no-store",
     }

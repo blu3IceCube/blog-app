@@ -23,7 +23,7 @@ const fetcher = async (url: string) => {
 const Comments = ({ postSlug }: { postSlug: string }) => {
   const { status } = useSession();
   const { data, mutate, isLoading } = useSWR(
-    `http://localhost:3000/api/comments?postSlug=${postSlug}`,
+    `https://blog-app-brown-gamma.vercel.app/api/comments?postSlug=${postSlug}`,
     fetcher
   );
 

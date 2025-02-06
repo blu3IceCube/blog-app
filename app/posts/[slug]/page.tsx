@@ -4,9 +4,12 @@ import Comments from "@/components/Comments";
 import { Post } from "@/types";
 
 const getData = async (slug: string): Promise<Post> => {
-  const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `https://blog-app-brown-gamma.vercel.app/api/posts/${slug}`,
+    {
+      cache: "no-store",
+    }
+  );
 
   if (!res.ok) {
     throw new Error("Failed!");

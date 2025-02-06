@@ -62,16 +62,19 @@ const WritePage = () => {
       .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async () => {
-    const res = await fetch("http://localhost:3000/api/posts", {
-      method: "POST",
-      body: JSON.stringify({
-        title,
-        desc: value,
-        img: fileUrl,
-        slug: slugify(title),
-        catSlug: catSlug || "style",
-      }),
-    });
+    const res = await fetch(
+      "https://blog-app-brown-gamma.vercel.app/api/posts",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          title,
+          desc: value,
+          img: fileUrl,
+          slug: slugify(title),
+          catSlug: catSlug || "style",
+        }),
+      }
+    );
     console.log("response", res);
   };
 
