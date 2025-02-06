@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useContext, useState } from "react";
-import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 import plusImg from "@/public/plus.png";
 import imageImg from "@/public/image.png";
