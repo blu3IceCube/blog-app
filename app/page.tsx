@@ -5,11 +5,12 @@ import Menu from "@/components/Menu";
 import { FC } from "react";
 
 interface Props {
-  searchParams: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 }
 
-const Home: FC<Props> = ({ searchParams }) => {
-  const page = parseInt(searchParams.page as string) || 1;
+const Home = async ({ searchParams }: Props) => {
+  const props = await searchParams;
+  const page = parseInt(props.page as string) || 1;
   return (
     <div>
       <Featured />
